@@ -1,5 +1,5 @@
-a:	lex.yy.c
+
+a:	activity7.l
+	flex activity7.l
 	cc lex.yy.c -lfl
 
-lex.yy.c:	activity6.l
-			flex activity6.l
