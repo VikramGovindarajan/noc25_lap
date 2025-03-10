@@ -10,6 +10,9 @@
 "-"		{ return SUBOP; }
 "*"		{ return MULOP; }
 "/"		{ return DIVOP; }
+"^"		{ return POWER; }
+"log10"	{ return LOG10; }
+"exit"	{ return EXIT; }
 "("		{ return OP; }
 ")"		{ return CP; }
 [0-9]+	{ yylval = atoi(yytext); return NUM; }
