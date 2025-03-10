@@ -1,16 +1,21 @@
+/* recognize tokens for the calculator and print them out */
+
 %{
-	int num, ans = 0;
+# include "activity7.tab.h"
 %}
 
 %%
 
--?[1-9][0-9]*	{ num = atoi(yytext); }
-"+"				{ ans = ans + num; }
-[\n]			{ ans = ans + num; printf(">%d\n",ans); ans = 0; }
+"+"		{ return ADDOP; }
+"-"		{ return SUBOP; }
+"*"		{ return MULOP; }
+"/"		{ return DIVOP; }
+"("		{ return OP; }
+")"		{ return CP; }
+[0-9]+	{ yylval = atoi(yytext); return NUM; }
+[\n]	{ return EOL; }
+"//".*
+[ \t]	{ /*ignore white space */ }
+.		{ yyerror("Mystery character %c\n", *yytext); }
 
 %%
-int main()
-{
-	yylex();
-	return 0;
-}

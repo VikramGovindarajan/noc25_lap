@@ -1,5 +1,6 @@
 
-a:	activity7.l
+a:	activity7.l activity7.y
+	bison -d activity7.y
 	flex activity7.l
-	cc lex.yy.c -lfl
+	cc activity7.tab.c lex.yy.c -lfl
 
