@@ -1,7 +1,9 @@
 /* recognize tokens for the calculator and print them out */
 
 %{
-# include "activity7.tab.h"
+# include "activity.tab.h"
+void yyerror(const char *s);
+
 %}
 
 %%
@@ -19,6 +21,11 @@
 [\n]	{ return EOL; }
 "//".*
 [ \t]	{ /*ignore white space */ }
-.		{ yyerror("Mystery character %c\n", *yytext); }
+. {
+    char msg[64];
+    snprintf(msg, sizeof(msg), "Mystery character '%c'", *yytext);
+    yyerror(msg);
+}
+
 
 %%
